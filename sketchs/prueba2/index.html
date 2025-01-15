@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js"></script>
+  <meta charset="utf-8" />
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  </style>
+  <title>Sketch prueba 1</title>
+</head>
+<body>
+  <main></main>
+  <script>
+
+////////////////////////////////////////////////////////////////////
+// plantilla de sketch para incluir como iframe:
+
+  /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En El Inicio! ~ ~ ~ ~ */ /* ~ */
+  /* ~ */                                                    /* ~ */
+  /* ~ */    // variables globales, preload, etc, etc. //    /* ~ */
+  /* ~ */                                                    /* ~ */
+  /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
+
+//////////////////////////////////
+function setup() {
+
+  createCanvas(500, 600); // resolucion interna (ojo a proporcion)
+  comunicarVentana(); // <== se llama una vez creado el canvas
+
+  /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En El Setup!! ~ ~ ~ ~ */ /* ~ */
+  /* ~ */                                                    /* ~ */
+  /* ~ */   // inicializaciones, ajustes generales, etc //   /* ~ */
+  /* ~ */                                                    /* ~ */
+  /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
+}
+
+//////////////////////////////////
+function draw() {
+
+  /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En EL Draw!!! ~ ~ ~ ~ */ /* ~ */
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ Dibujitos De Ejemplo ~ ~ ~ ~ ~ ~ */ /* ~ */
+  /* ~ */                                                    /* ~ */
+  /* ~ */  const vl = 0.004;                                 /* ~ */
+  /* ~ */  const re = (frameCount * 3) % 255;                /* ~ */
+  /* ~ */  if (re === 0) return;                             /* ~ */
+  /* ~ */  const ci = ceil((frameCount * 3) / 255) * 1234;   /* ~ */
+  /* ~ */  const px = noise(re * vl + ci) * 500;             /* ~ */
+  /* ~ */  const py = noise(re * vl + ci + 1234) * 600;      /* ~ */
+  /* ~ */  background(250, 100 + (re * 0.1), re);            /* ~ */
+  /* ~ */  fill(250, 20);                                    /* ~ */
+  /* ~ */  for (let i = 0; i < 10; i++) {                    /* ~ */
+  /* ~ */   circle(px, py, 150 + i * 100);                   /* ~ */
+  /* ~ */  }                                                 /* ~ */
+  /* ~ */  const txt = isLooping().toString().toUpperCase()  /* ~ */
+  /* ~ */  fill(0);                                          /* ~ */
+  /* ~ */  textSize(44);                                     /* ~ */
+  /* ~ */  textAlign(CENTER, CENTER);                        /* ~ */
+  /* ~ */  text(txt, px, py);                                /* ~ */
+  /* ~ */                                                    /* ~ */
+  /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
+}
+
+//////////////////////////////////
+// COPIAR Y PEGAR: esta funcion 
+function comunicarVentana() {
+
+  // evento message
+  function actualizarReproduccion(e) {
+    if (!e.data || typeof e.data.activo !== "boolean") return;
+    e.data.activo ? loop() : noLoop();
+  }
+
+  // evento resize
+  function canvasResponsive() {
+    const body = document.querySelector("body");
+    const canv = document.querySelector("#defaultCanvas0");
+    body.style.overflow = "hidden";
+    body.style.display = "flex";
+    body.style.justifyContent = "center";
+    body.style.alignItems = "center";
+    body.style.height = "100vh";
+    if (windowWidth * height > windowHeight * width) {
+      canv.style.height = "100vh";
+      canv.style.width = (100 / height) * width + "vh";
+    }
+    else {
+      canv.style.width = "100vw";
+      canv.style.height = (100 / width) * height + "vw";
+    }
+  }
+
+  // escuchar mensaje externo
+  window.addEventListener("message", (e) => actualizarReproduccion(e));
+
+  // adaptar medida (responsive)
+  window.addEventListener("resize", () => canvasResponsive());
+
+  // ejecucion inicial
+  canvasResponsive();
+  noLoop();
+}
+
+// fin de la plantilla. saludos. 
+////////////////////////////////////////////////////////////////////
+
+  </script>
+</body>
+</html>
