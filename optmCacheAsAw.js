@@ -23,19 +23,19 @@ async function escribirCache(evento) {
   
   // ejecucion previa a que termine el evento
   evento.waitUntil( // *recibe una promesa (aprender "asincronia") !!!
-    (async () => { // *ejecucion inmediata (aprender "funciones iife")
+    (async () => { // *invocacion inmediata (aprender "funciones iife")
 
       // el objeto "caches" es parte de la api "cache storage"
       // y permite escribir/leer recursos en memoria local del navegador.
       // es en plural ("caches") porque contiene varios compartimientos...
-      // ...diferenciables segun un nombre (en este caso: "p5-cache-v1")
-      const cache = await caches.open("p5-cache-v1"); // #PROMESA INTERMEDIA
-      console.log("[wrk etapa 1] cache abierta! agregando el codigo!");
+      // ...diferenciables segun un nombre (en este caso: "cache-p5-iframes")
+      const cache = await caches.open("cache-p5-iframes"); // #PROMESA
+      console.log("[wrkr log: 1] cache abierta! agregando el codigo!");
 
       // descarga codigo desde la url y lo guarda en memoria
       // (internamente hace: "fetch" y luego "cache.put")
-      await cache.add(URL_P5); // #PROMESA FINAL
-    })() // *iife
+      return await cache.add(URL_P5); // #PROMESA FINAL que recibe waitUntil
+    })() // * funcion iife
   );
 };
 
@@ -51,14 +51,14 @@ async function interceptarSolicitud(evento) {
   // y se intentara responder con informacion de la cache
 
   evento.respondWith( // *recibe una promesa (aprender "asincronia")
-    (async () => { // *ejecucion inmediata (aprender "funciones iife")
+    (async () => { // *invocacion inmediata (aprender "funciones iife")
 
       // revisa que exista la misma solicitud
       const respuesta0 = await caches.match(evento.request); // #PROMESA 0
 
       // si existe...
       if (respuesta0) {
-        console.log("[wrk etapa 2] leyendo p5 desde la cache!!!");
+        console.log("[wrkr log: 2] leyendo p5 desde la cache!!!");
         return respuesta0; // ...retorna la copia de cache
       }
 
@@ -67,22 +67,22 @@ async function interceptarSolicitud(evento) {
 
 				// ...hubo algun error, asi que se solicita de nuevo
         const respuesta1 = await fetch(evento.request); // #PROMESA 1
-        console.log("[wrk etapa 3] resolviendo. nueva solicitud!");
+        console.log("[wrkr log: 3] resolviendo. nueva solicitud!");
 
         // intenta acceder al compartimiento de la cache...
-        const cache = await caches.open("p5-cache-v1"); // #PROMESA 2
-        console.log("[wrk etapa 4] resolviendo. almacenando respuesta!");
+        const cache = await caches.open("cache-p5-iframes"); // #PROMESA 2
+        console.log("[wrkr log: 4] resolviendo. almacenando respuesta!");
 
         // ...y lo sobreescribe (clone pq "respuesta" es un flujo)
         await cache.put(evento.request, respuesta1.clone()); // #PROMESA 3
 
         // se resuleve fetch con nueva respuesta recibida
-        return respuesta1; // #PROMESA 3. FINAL
+        return respuesta1; // respondWith recibe PROMESA 1
       }
 			catch (error) { // #PROMESAS 1 a 3. caso resolucion nottt
-        console.log("[wrk etapa 5] no se pudo resolver. error:\n", error);
+        console.log("[wrkr log: 5] no se pudo resolver. error:\n", error);
       }
-    })() // *iife
+    })() // *funcion iife
   );
 };
 //

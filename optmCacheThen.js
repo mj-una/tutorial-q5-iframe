@@ -27,9 +27,9 @@ function escribirCache(evento) {
 		// el objeto "caches" es parte de la api "cache storage"
 		// y permite escribir/leer recursos en memoria local del navegador.
 		// es en plural ("caches") porque contiene varios compartimientos...
-		// ...diferenciables segun un nombre (en este caso: "p5-cache-v1")
-    caches.open("p5-cache-v1").then(cache => { // #PROMESA INTERMEDIA
-      console.log("[wrk etapa 1] cache abierta! agregando el codigo!");
+		// ...diferenciables segun un nombre (en este caso: "cache-p5-iframes")
+    caches.open("cache-p5-iframes").then(cache => { // #PROMESA INTERMEDIA
+      console.log("[wrkr log: 1] cache abierta! agregando el codigo!");
 
 			// descarga codigo desde la url y lo guarda en memoria
 			// (internamente hace: "fetch" y luego "cache.put")
@@ -55,18 +55,18 @@ function interceptarSolicitud(evento) {
 
 			// si existe...
 			if (respuesta0) {
-				console.log("[wrk etapa 2] leyendo p5 desde la cache!!!");
+				console.log("[wrkr log: 2] leyendo p5 desde la cache!!!");
 				return respuesta0; // ...retorna la copia de cache
 			}
 
 			// si no existe...
 			// ...hubo algun error, asi que se solicita de nuevo
 			return fetch(evento.request).then(respuesta => { // #PROMESA 1. oki
-				console.log("[wrk etapa 3] resolviendo. nueva solicitud!");
+				console.log("[wrkr log: 3] resolviendo. nueva solicitud!");
 
 				// intenta acceder al compartimiento de la cache...
-				return caches.open("p5-cache-v1").then(cache => { // #PROMESA 2
-					console.log("[wrk etapa 4] resolviendo. almacenando respuesta!");	
+				return caches.open("cache-p5-iframes").then(cache => { // #PROMESA 2
+					console.log("[wrkr log: 4] resolviendo. almacenando respuesta!");	
 
 					// ...y lo sobreescribe (clone pq "respuesta" es un flujo)
 					cache.put(evento.request, respuesta.clone());
@@ -75,7 +75,7 @@ function interceptarSolicitud(evento) {
 					return respuesta; // #PROMESA 3. FINAL
 				});
 			}).catch(error => { // #PROMESAS 1 a 3. resolucion nottt
-				console.log("[wrk etapa 5] no se pudo resolver. error:\n", error);
+				console.log("[wrkr log: 5] no se pudo resolver. error:\n", error);
 			});
 		})
 	);

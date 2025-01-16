@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////
 //
 //
-// OPTIMIZACION: 
+// OPTIMIZACION
 // LOOPS SEGUN VISIBILIDAD
 // 
 // mucho texto
@@ -13,13 +13,32 @@
 // 
 //////////////////////////////////
 
-// variable global (de estado):
+/* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+/* ~ */ /* ~ ~ ~ ~ Ajuste Modos De Reproduccion ~ ~ ~ ~ */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*         Modo Vista Parcial: (+) true         */ /* ~ */
+/* ~ */ /*  se activa si al menos un borde es visible.  */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*        Modo Vista Estricta: (-) false        */ /* ~ */
+/* ~ */ /* se activa solo si ambos bordes son visibles. */ /* ~ */
+/* ~ */                                                    /* ~ */
+/* ~ */       let VIS_PARCIAL = true; // EDITABLE!!!       /* ~ */
+/* ~ */                                                    /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /* ~ ~ ~ ~ Usado Por "estaEnViewport()" ~ ~ ~ ~ */ /* ~ */
+/* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+
 // flag para evitar llamadas repetidas
 let saltarLlamada = false;
 
 //////////////////////////////////
 // verificar si es visible
-function estaEnViewport(elemento, parcial = true) {
+function estaEnViewport(elemento) {
   
   // posicion caja del elemento respecto a viewport
   const box = elemento.getBoundingClientRect();
@@ -28,11 +47,10 @@ function estaEnViewport(elemento, parcial = true) {
   const bordeArriba = box.top >= 0 && box.top <= window.innerHeight;
   const bordeAbajo = box.bottom >= 0 && box.bottom <= window.innerHeight;
 
-  // por defecto = se activa cuando el iframe es PARCIALMENTE visible.
-  // depende de 2do arg = para que se active cuando sea TOTALMENTE visible:
-  // cambiando "||" por "&&" (asi retorna true solo si se ven ambos bordes)
-  if (parcial) return bordeArriba || bordeAbajo;
-  else return bordeArriba && bordeAbajo;
+  // MODO VISTA PARCIAL: retorna true si al menos un borde es visible.
+  // MODO VISTA ESTRICTA: retorna true solo si son visibles ambos bordes.
+  if (VIS_PARCIAL) return bordeArriba || bordeAbajo; // (+) modo parcial
+  else return bordeArriba && bordeAbajo; // (-) modo estricto
 }
 
 //////////////////////////////////
@@ -44,9 +62,7 @@ function recorrerIframes() {
     // por cada uno:
 
     // [#2] revisa posicion
-    // dewfdewfdw ee wd ew dew de  ed dwe dwe dew ew de w
-    const MODO_PARCIAL = false; // EDITABLE!!! true / false
-    const esVisible = estaEnViewport(elem, MODO_PARCIAL);
+    const esVisible = estaEnViewport(elem);
     
     // [#3] ENVIO DE MENSAJE. apreder sobre iframes <3
     elem.contentWindow.postMessage({ activo: esVisible }, "*");
@@ -72,9 +88,8 @@ function accesoLlamadas() {
     saltarLlamada = false; // liberar acceso nuevamente
   });
 }
-//
-////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////
 // [#0] EVENTOS INICIADORES DE EJECUCION
 
 // primer acceso
@@ -84,3 +99,45 @@ window.addEventListener("load", accesoLlamadas);
 window.addEventListener("scroll", accesoLlamadas);
 window.addEventListener("resize", accesoLlamadas);
 
+//
+//
+// solo copiar hasta aca!!!
+// fin de la plantilla de optimizacion de viewport.
+// todo lo que sigue es para la explicacion de modo parcial vs estricto
+////////////////////////////////////////////////////////////////////////
+
+const titulModo = document.querySelector(".modo h2");
+const textoModo = document.querySelector(".modo-txt");
+const botonModo = document.querySelector("#btnModo");
+
+// evento click boton
+botonModo.addEventListener("click", () => {
+
+  if (VIS_PARCIAL) {
+    titulModo.innerHTML = "Modo vista estricta";
+    textoModo.innerHTML = textoModoEstricto;
+    botonModo.innerHTML = "Cambiar a<br>modo parcial";
+    VIS_PARCIAL = false;
+    accesoLlamadas();
+    return;
+  }
+  
+  titulModo.innerHTML = "Modo vista parcial";
+  textoModo.innerHTML = textoModoParcial;
+  botonModo.innerHTML = "Cambiar a<br>modo estricto"
+  VIS_PARCIAL = true;
+  accesoLlamadas();
+});
+
+// parrafos texto
+const textoModoEstricto = `<p>Lorem ipsum consectetur adipisicing elit. Magni sunt vero commodi officia quam adipisci illo corporis ducimus, libero expedita quae, eaque nisi ea. Suscipit laborum esse a nisi facere.</p>
+<p>Lorem, ipsum dolor sit consectetur de de de de adipisicing elit. Labore fugit in sequi iste est eos, veniam dolorum ipsum fuga ea hic totam itaque iusto tenetur ducimus? Eos rem ratione, cumque earum unde voluptatem aperiam esse modi maiores odit nemo rerum, temporibus fugiat sit quidem nulla eveniet quas eius aliquam asperiores quasi et ipsam saepe reiciendis? Adipisci iusto doloribus quis quam!</p>`;
+
+const textoModoParcial = `<p>Lala consectetur adipisicing elit. Magni sunt vero commodi officia quam adipisci illo corporis ducimus, libero expedita quae, eaque nisi ea. Suscipit laborum esse a nisi facere.</p>
+<p>Pepe upsum dolor sit amet consectetur adipisicing elit. Labore fugit in sequi iste est eos, veniam ipsum fuga ea hic totam itaque iusto tenetur ducimus? Eos rem ratione, cumque earum unde voluptatem aperiam es tese modi maiores odit nemo rerum, temporibus fugiat sit quidem nulla eveniet quas eius aliquam asperiores quasi et ipsam saepe reiciendis? Adipisci iusto doloribus quis quam!</p>`;
+
+// iniciar texto
+(() => {
+  if (VIS_PARCIAL) textoModo.innerHTML = textoModoParcial;
+  else textoModo.innerHTML = textoModoEstricto;
+})() // funcion iife

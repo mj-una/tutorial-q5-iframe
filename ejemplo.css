@@ -2,14 +2,71 @@
   margin: 0;
   padding: 0;
   border: 0;
+
   box-sizing: border-box;
+  text-align: center;
+
+  color: rgb(56, 46, 46);
+  font-family: sans-serif, monospace;
 }
 
 html {
   background-color: tan;
 }
 
-iframe {
-  width: 80vw;
-  aspect-ratio: 5/6; /* misma proporcion que widht/height de los skecth !!!  */
+body {
+  width: 100%;
+  max-width: 60vh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  padding: 2vh;
+}
+
+.tarjeta {
+  margin: 1vh;
+  margin-bottom: 2vh;
+  padding: 1vh;
+  border-radius: 1vh ;
+
+  background-color: rgb(241, 198, 197);
+}
+
+.tarjeta h3 {
+  padding-bottom: 0.7vh;
+}
+
+.tarjeta iframe {
+  width: 100%;
+  aspect-ratio: 5/6;  /*  <=== OJOPIOJO  */
+}
+
+.modo {
+  margin: 20px;
+  margin-top: 30px;
+}
+
+.modo p {
+  margin: 10px;
+}
+
+.modo button {
+  margin: 6px;
+  padding: 5px 14px;
+  border-radius: 5px;
+
+  background-color: rgb(237, 222, 221);
+
+  font-size: 1em;
+}
+
+footer {
+  padding-bottom: 2vh;
+  font-size: 0.9em;
 }

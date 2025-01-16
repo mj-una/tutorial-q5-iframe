@@ -22,13 +22,13 @@
       <circle cx='20' cy='47.32' r='10' class='cs bl'/> 
     </svg>" />
     
-    <!-- OPTIMIZACION DE CACHE (OPCIONAL) -->
+    <!-- OPTIMIZACION DE CACHE -->
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("optmCacheAsAw.js").then(() => {
-          console.log("[wrk etapa 0] worker registrado okiii!!!");
+          console.log("[wrkr log: 0] worker registrado okiii!!!");
         }).catch(error => {
-          console.error("error al registrar worker:", error);
+          console.error("[wrkr log: -1] error al registrar worker:\n", error);
         });
       }
     </script>
@@ -38,46 +38,51 @@
   <body>
     <header>
       <h1>Portafolio de sketchs</h1>
-      <h3>por Hache Temele</h3>
+      <h4>por Hache Temele</h4>
     </header>
     
     <main>
-      <h2>Prueba 1</h2>
-      <iframe src="sketchs/prueba1/index.html" id="sk1" class="sk-iframe"></iframe>
-      <h2>Prueba 2</h2>
-      <iframe src="sketchs/prueba2/index.html" id="sk2" class="sk-iframe"></iframe>
-      <h2 id="pr3">Prueba 3</h2>
-      <iframe src="sketchs/prueba3/index.html" id="sk3" class="sk-iframe"></iframe>
-      <h2>Prueba 4</h2>
-      <iframe src="sketchs/prueba4/index.html" id="sk4" class="sk-iframe"></iframe>
-      <h2>Prueba 5</h2>
-      <iframe src="sketchs/prueba5/index.html" id="sk5" class="sk-iframe"></iframe>
+      <div class="tarjeta">
+        <h3>Prueba 1</h3>
+        <iframe src="sketchs/prueba1/index.html" id="sk1" class="sk-iframe"></iframe>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Prueba 2</h3>
+        <iframe src="sketchs/prueba2/index.html" id="sk2" class="sk-iframe"></iframe>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Prueba 3</h3>
+        <iframe src="sketchs/prueba3/index.html" id="sk3" class="sk-iframe"></iframe>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Prueba 4</h3>
+        <iframe src="sketchs/prueba4/index.html" id="sk4" class="sk-iframe"></iframe>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Prueba 5</h3>
+        <iframe src="sketchs/prueba5/index.html" id="sk5" class="sk-iframe"></iframe>
+      </div>
+    
+      <section class="modo">
+        <h2>Modo vista parcial</h2>
+        <div class="modo-txt">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni sunt vero commodi officia quam adipisci illo corporis ducimus, libero expedita quae, eaque nisi ea. Suscipit laborum esse a nisi facere.</p>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore fugit in sequi iste est eos, veniam dolorum ipsum fuga ea hic totam itaque iusto tenetur ducimus? Eos rem ratione, cumque earum unde voluptatem aperiam esse modi maiores odit nemo rerum, temporibus fugiat sit quidem nulla eveniet quas eius aliquam asperiores quasi et ipsam saepe reiciendis? Adipisci iusto doloribus quis quam!</p>
+        </div>
+        <button type="button" id="btnModo">Cambiar a<br>modo estricto</button>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, nobis! Exercitationem impedit quam eveniet vitae, odio optio? Necessitatibus sit natus aperiam minus incidunt ut itaque, deleniti id laborum quaerat illo fugit magnam inventore vel nisi voluptatem cum modi harum consequatur neque sapiente, error exercitationem. Perspiciatis.</p>
+      </section>
     </main>
     
     <footer>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor dolore repudiandae voluptas odit modi! Illum natus distinctio asperiores aperiam, impedit voluptatem molestias ex obcaecati corporis ipsa illo est beatae hic!
-      Eius corporis facere eveniet, aperiam iste ab dicta, consequuntur assumenda similique dignissimos rem, quos cumque quia? Labore deserunt exercitationem recusandae voluptates delectus corporis, ut laborum sunt quae est voluptas fugit!
-      Odio officia blanditiis culpa nihil necessitatibus consequatur, rerum veniam voluptas, ex, explicabo magni incidunt error ea corporis! Non reprehenderit pariatur maxime, delectus et unde dignissimos accusantium ex quibusdam explicabo rem!
-      Quae unde vel velit molestias magnam eius numquam fugit rerum, blanditiis sint animi placeat illum consequatur nam corporis, corrupti soluta in quia, fuga iure iusto maxime quos et at! Deserunt?
-      Facilis, magnam doloremque? Ducimus hic soluta neque amet earum possimus? Corporis, maxime ipsam hic atque aliquid architecto ut enim iste rerum nam animi, iusto quibusdam veritatis vitae dicta natus praesentium.
-      Atque similique corrupti minima illo, architecto quod deserunt neque hic deleniti officia natus perspiciatis quam nulla unde voluptas odit. Quaerat ratione saepe veniam quod repellat laboriosam praesentium iusto facere magnam.
-      Voluptatem dignissimos alias eveniet autem illo! Magni amet aliquam aut nemo natus quod necessitatibus laborum ipsum, nesciunt consequatur! Magnam ipsum aperiam id numquam. Laborum nesciunt modi dolorum, molestiae praesentium fuga?
-      Accusamus pariatur quam libero laudantium ut omnis distinctio. Officiis, minus rerum impedit esse a praesentium similique ipsam dolores, ea in magnam consectetur ut voluptates debitis expedita quam reiciendis. Mollitia, enim!
-      Dignissimos impedit, dolore atque maxime molestias labore, accusamus ipsum rem incidunt repellat ducimus iste hic cum quia autem expedita sapiente nulla, iusto ipsa voluptates! Debitis ipsum quam ipsam magni eligendi?
-      Aliquid, fuga. Dicta ducimus nulla error odio at dolor accusantium, nesciunt harum quis consequuntur consequatur totam ab exercitationem perferendis nihil optio eum cupiditate dolorem! Earum mollitia fuga alias iste eligendi.
-      Provident ex tenetur impedit corrupti exercitationem vel sequi maxime nostrum officiis. Nobis, provident consequatur! Recusandae, quam ipsa expedita in harum modi iure obcaecati? Aliquam similique unde ex, mollitia porro qui?
-      Earum, sapiente atque! Impedit, quae. Nulla voluptatum fugit quis ex inventore minus harum eius temporibus veniam dolore accusamus dolores placeat facere repellendus, eveniet repellat officia optio neque expedita. Quae, corporis.
-      Accusantium facere, alias laudantium dignissimos nemo non adipisci soluta, tempore vitae id illo quidem omnis. Itaque, nisi quo. Iusto cum molestias quibusdam molestiae, repellat eaque tempora! Minima nihil voluptatibus eius?
-      Molestias error soluta eveniet libero veniam ad iure aut ipsa quod, amet facere omnis possimus magnam animi sed qui distinctio. Dolorem provident vel quos, obcaecati iusto molestias maxime est quae.
-      Maiores, blanditiis temporibus quis reprehenderit nisi dicta. Totam at quasi, placeat eaque perferendis nihil laboriosam pariatur nisi enim voluptatibus eum molestiae obcaecati asperiores saepe, inventore magnam, nobis velit officia nulla.
-      Molestiae corrupti numquam vel neque ab quas sint reprehenderit! Quidem, debitis nisi! Facilis officiis excepturi atque in unde, nam sunt eum, ab nisi iure, numquam veniam pariatur laudantium repudiandae harum?
-      Voluptate labore iure, animi sunt dignissimos explicabo omnis illo, perferendis temporibus eum deleniti optio, maxime est ducimus velit sint hic culpa possimus deserunt. Optio non voluptates autem odio asperiores esse!
-      Cum ullam, dolorem aut ad repellat laborum aliquid quaerat consectetur ipsam molestias quia error similique? Ex ducimus, reprehenderit est cumque, enim quibusdam dolor nostrum vitae inventore cupiditate animi voluptatibus saepe?
-      Quos temporibus dolore qui nulla eum sint dolor consequatur sequi perspiciatis, ipsam animi. Esse eaque, necessitatibus asperiores earum corporis maxime natus ad. Iusto cupiditate sed assumenda at, sit rerum fugit?
-      Voluptatibus quis sit mollitia fugit libero doloremque maxime alias non natus, consequatur optio consectetur minima consequuntur, obcaecati dolore repudiandae quia ipsum autem, eius qui? Quis dolorum non aut voluptatum nulla.</p>
+      <p>mj-una. cc0. al dominio publico</p>
     </footer>
 
-    <!-- OPTIMIZACION DE VISTA (OBLIGATORIO) -->
+    <!-- OPTIMIZACION DE VISTA -->
     <script src="optmViewport.js"></script>
   </body>
 </html>
