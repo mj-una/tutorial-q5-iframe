@@ -10,7 +10,7 @@ Se pueden hacer cosas muuuy geniales con esto. Me gusta el concepto porque se re
 
 <hr>
 
-Para entender la parte de optimizacion de cache es necesario meterse con asincronia. Inclui dos versiones del mismo worker: uno hecho solo con promesas y otro usando async/await. Recomiendo arrancar por entender el event loop con callbacks simples (tipo setTimeout), luego pasar a las promesas (aunque sean un laberinto jaja) y para el ultimo lo mejor: el async/await (que por dentro siii, tambien son promesas!)
+Para entender la parte de optimizacion de cache es necesario sufrir con la asincronia. Inclui dos versiones del mismo worker: uno hecho solo con promesas y otro usando async/await. Recomiendo arrancar por entender el event loop con callbacks simples (tipo setTimeout), luego pasar a las promesas (aunque sean un laberinto jaja) y para el ultimo lo mejor: el async/await (que por dentro siii, tambien son promesas!)
 
 Yo aprendi jugando a partir de este video: [4tomik en youtube](https://youtu.be/dX2lThXc0p4?si=pHalDVe4enRAyWpg)
 
