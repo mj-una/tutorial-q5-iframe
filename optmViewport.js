@@ -117,7 +117,7 @@ const botonModo = document.querySelector("#btnModo");
 botonModo.addEventListener("click", () => {
 
   if (VIS_PARCIAL) {
-    titulModo.innerHTML = "Modo vista estricta";
+    titulModo.innerHTML = "Modo vista estricta:";
     textoModo.innerHTML = textoModoEstricto;
     botonModo.innerHTML = "Cambiar a<br>modo parcial";
     VIS_PARCIAL = false;
@@ -125,7 +125,7 @@ botonModo.addEventListener("click", () => {
     return;
   }
   
-  titulModo.innerHTML = "Modo vista parcial";
+  titulModo.innerHTML = "Modo vista parcial:";
   textoModo.innerHTML = textoModoParcial;
   botonModo.innerHTML = "Cambiar a<br>modo estricto"
   VIS_PARCIAL = true;
@@ -133,10 +133,11 @@ botonModo.addEventListener("click", () => {
 });
 
 // BORRAR 3/5: parrafos texto
-const textoModoEstricto = `<p>Fijate ahora, los sketchs recien se activan cuando estan por completo dentro de la zona visible (el viewport). Esto no solo es una optimizacion de recursos, sino que ademas fuerza a las personas a concentrarse por completo en un contenido en particular. Estas focalizaciones, mas al snap scroll, son la base del diseño ux de tiktok o los reels de instagram</p>`;
+const textoModoEstricto = `<p>Fijate ahora, los sketchs se activan recien cuando estan por completo dentro de la zona visible (el viewport) de la pantalla.</p>
+<p>Esto no solo es una optimizacion de recursos, sino que ademas fuerza a las personas a detenerse frente a cada contenido en especifico. Estas focalizaciones, mas al snap scroll, son la base del diseño ux de tiktok o los reels de instagram.</p>`;
 
-const textoModoParcial = `<p>No se nota, pero los sketchs se pausan cada vez que salen de la pantalla. Asi se ahorran muchiiismos recursos, porque el loop de p5 es pesado y puede colapsar la pagina si varios dibujos se ejecutan juntos.</p>
-<p>Agrego otra opcion (que es muy comun en ux de scroll infinito) para que los sketchs se ejecuten solo cuando sean totalmente visibles. Probala aqui:</p>`;
+const textoModoParcial = `<p>No se nota, pero los sketchs se pausan cada vez que salen de la pantalla. Asi se ahorran muchiiismos recursos, porque el loop de p5 es pesado y puede colapsar la pagina si varios dibujos se ejecutan al mismo tiempo.</p>
+<p>Y agrego otra opcion (muy tipica en ux de scroll infinito) para que los sketchs se ejecuten recien cuando sean totalmente visibles. <br>Probala aqui:</p>`;
 
 // BORRAR 4/5: iniciar texto
 (() => {

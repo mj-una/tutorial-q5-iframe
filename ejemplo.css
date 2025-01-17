@@ -83,14 +83,14 @@ header {
 }
 
 .modo button {
-  min-width: 68px;
-  min-height: 48px;
+  min-width: 88px;
+  min-height: 58px;
 
-  margin: 6px;
-  padding: 5px 14px;
-  border-radius: 5px;
+  padding: max(7px, 1rem) max(15px, 1.4rem);
+  padding-bottom: max(9px, 1.15rem);
+  border-radius: max(5px, 0.6rem);
   
-  font-size: 1em;
+  font-size: max(18px, 1.5rem);
 
   background-color: rgb(237, 222, 221);
 }
@@ -152,7 +152,7 @@ footer {
   en vez de una clase, selecciona los id uno por uno,
   y ajusta la relacion de aspecto segun corresponda.
 
-  cualquier duda pregunta!!!
+  cualquier duda preguntame!!!
   saludos y aguante css vanila <3
 
 */
