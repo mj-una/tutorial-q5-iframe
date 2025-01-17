@@ -1,16 +1,12 @@
 ////////////////////////////////////////////////////////////////////////
 //
 //
-// OPTIMIZACION
-// LOOPS SEGUN VISIBILIDAD
-// 
-// mucho texto
-// explicacion objetivo codigo
-// recomendacion aprender iframes y requestAnimationFrame
-// link tutorial interactivo paso a paso
+// PLANTILLA: OPTIMIZACION VIEWPORT
+// sirve para activar loops segun visibilidad
+//  
+// version sin comentarios (menos spam, pero se pierde la poesia):
+// https://github.com/mj-una/tutorial-p5-iframes/blob/limpio/optmViewport.js
 //
-// link limpio: github.io
-// 
 //////////////////////////////////
 
 /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
@@ -25,10 +21,9 @@
 /* ~ */                                                    /* ~ */
 /* ~ */       let VIS_PARCIAL = true; // EDITABLE!!!       /* ~ */
 /* ~ */                                                    /* ~ */
-/* ~ */ /*                                              */ /* ~ */
-/* ~ */ /*                                              */ /* ~ */
-/* ~ */ /*                                              */ /* ~ */
-/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*    Para usar plantilla: edita true/false     */ /* ~ */
+/* ~ */ /*   y borra los ultimos bloques del archivo!   */ /* ~ */
+/* ~ */ /*               (estan marcados)               */ /* ~ */
 /* ~ */ /*                                              */ /* ~ */
 /* ~ */ /* ~ ~ ~ ~ Usado Por "estaEnViewport()" ~ ~ ~ ~ */ /* ~ */
 /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
@@ -99,18 +94,26 @@ window.addEventListener("load", accesoLlamadas);
 window.addEventListener("scroll", accesoLlamadas);
 window.addEventListener("resize", accesoLlamadas);
 
+// 
+// 
+// fin de la plantilla
 //
+//     > > @ < <
 //
 // solo copiar hasta aca!!!
-// fin de la plantilla de optimizacion de viewport.
 // todo lo que sigue es para la explicacion de modo parcial vs estricto
 ////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////
+// ANTES DE USAR PLANTILLA --> BORRA TODO ESTOOOooOOoooOOOooOOoOOOOoOoOO
+// (sirve para interactividad del boton)
+
+// BORRAR 1/5: capturar dom
 const titulModo = document.querySelector(".modo h2");
 const textoModo = document.querySelector(".modo-txt");
 const botonModo = document.querySelector("#btnModo");
 
-// evento click boton
+// BORRAR 2/5: evento click boton
 botonModo.addEventListener("click", () => {
 
   if (VIS_PARCIAL) {
@@ -129,15 +132,20 @@ botonModo.addEventListener("click", () => {
   accesoLlamadas();
 });
 
-// parrafos texto
-const textoModoEstricto = `<p>Lorem ipsum consectetur adipisicing elit. Magni sunt vero commodi officia quam adipisci illo corporis ducimus, libero expedita quae, eaque nisi ea. Suscipit laborum esse a nisi facere.</p>
-<p>Lorem, ipsum dolor sit consectetur de de de de adipisicing elit. Labore fugit in sequi iste est eos, veniam dolorum ipsum fuga ea hic totam itaque iusto tenetur ducimus? Eos rem ratione, cumque earum unde voluptatem aperiam esse modi maiores odit nemo rerum, temporibus fugiat sit quidem nulla eveniet quas eius aliquam asperiores quasi et ipsam saepe reiciendis? Adipisci iusto doloribus quis quam!</p>`;
+// BORRAR 3/5: parrafos texto
+const textoModoEstricto = `<p>Fijate ahora, los sketchs recien se activan cuando estan por completo dentro de la zona visible (el viewport). Esto no solo es una optimizacion de recursos, sino que ademas fuerza a las personas a concentrarse por completo en un contenido en particular. Estas focalizaciones, mas al snap scroll, son la base del diseño ux de tiktok o los reels de instagram</p>`;
 
-const textoModoParcial = `<p>Lala consectetur adipisicing elit. Magni sunt vero commodi officia quam adipisci illo corporis ducimus, libero expedita quae, eaque nisi ea. Suscipit laborum esse a nisi facere.</p>
-<p>Pepe upsum dolor sit amet consectetur adipisicing elit. Labore fugit in sequi iste est eos, veniam ipsum fuga ea hic totam itaque iusto tenetur ducimus? Eos rem ratione, cumque earum unde voluptatem aperiam es tese modi maiores odit nemo rerum, temporibus fugiat sit quidem nulla eveniet quas eius aliquam asperiores quasi et ipsam saepe reiciendis? Adipisci iusto doloribus quis quam!</p>`;
+const textoModoParcial = `<p>No se nota, pero los sketchs se pausan cada vez que salen de la pantalla. Asi se ahorran muchiiismos recursos, porque el loop de p5 es pesado y puede colapsar la pagina si varios dibujos se ejecutan juntos.</p>
+<p>Agrego otra opcion (que es muy comun en ux de scroll infinito) para que los sketchs se ejecuten solo cuando sean totalmente visibles. Probala aqui:</p>`;
 
-// iniciar texto
+// BORRAR 4/5: iniciar texto
 (() => {
   if (VIS_PARCIAL) textoModo.innerHTML = textoModoParcial;
   else textoModo.innerHTML = textoModoEstricto;
 })() // funcion iife
+
+//////////////////////////////////
+// BORRAR 5/5: recordatorio
+
+// acordate de borrar los ultimos 5 bloques de codigo
+// con ctrl+f busca la arroba: > > @ < <

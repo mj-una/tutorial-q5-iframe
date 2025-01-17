@@ -10,48 +10,71 @@
     box-sizing: border-box;
   }
   </style>
-  <title>Sketch prueba 1</title>
+  <title>Sketch prueba</title>
 </head>
 <body>
   <main></main>
   <script>
 
 ////////////////////////////////////////////////////////////////////
-// plantilla de sketch para incluir como iframe:
+//
+// PLANTILLA DE SKETCH
+// para incluir como iframe
+//
+// copiar y pegar el html sin cambiar nada,
+// los estilos necesarios ya estan incluidos.
+//
+// la funcion "comunicarSketch" sirve para dos cosas:
+// 1) adapta el canvas a la medida del contexto (el iframe)
+// 2) recibe un mensaje booleano para activar o desctivar el loop
+// hay que copiarla completa. y no olvides la llamada inical!!! [$]
+//
+// esta plantilla es una base, si aprendes a usar la api postMessage
+// podes hacer muchiiismas otras cosas. recomendacion 100000% 
+//
+//////////////////////////////////
 
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En El Inicio! ~ ~ ~ ~ */ /* ~ */
   /* ~ */                                                    /* ~ */
-  /* ~ */    // variables globales, preload, etc, etc. //    /* ~ */
+  /* ~ */    // VARIABLES GLOBALES, PRELOAD, ETC, ETC. //    /* ~ */
   /* ~ */                                                    /* ~ */
   /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 
 //////////////////////////////////
 function setup() {
 
+  // la medidas bla bla3efff
+  // wef efwfewf wfqqf g5 rgerg  ww wefweff aas asdd wef
+  // cerfe ewf we ewfon nij efoefnow efwefof ewewfffewf eww
   createCanvas(500, 600); // resolucion interna (ojo a proporcion)
-  comunicarVentana(); // <== se llama una vez creado el canvas
+  comunicarVentana(); // <== se llama una vez creado el canvas [$]
 
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En El Setup!! ~ ~ ~ ~ */ /* ~ */
   /* ~ */                                                    /* ~ */
-  /* ~ */   // inicializaciones, ajustes generales, etc //   /* ~ */
+  /* ~ */   // INICIALIZACIONES, AJUSTES GENERALES, ETC //   /* ~ */
   /* ~ */                                                    /* ~ */
-  /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
+  /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 }
 
 //////////////////////////////////
 function draw() {
 
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En EL Draw!!! ~ ~ ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ ~ ~ Dibujitos De Ejemplo ~ ~ ~ ~ ~ ~ */ /* ~ */
   /* ~ */                                                    /* ~ */
-  /* ~ */  const vl = 0.004;                                 /* ~ */
+  /* ~ */  const vl = 0.002;                                 /* ~ */
   /* ~ */  const re = (frameCount * 3) % 255;                /* ~ */
   /* ~ */  if (re === 0) return;                             /* ~ */
   /* ~ */  const ci = ceil((frameCount * 3) / 255) * 1234;   /* ~ */
   /* ~ */  const px = noise(re * vl + ci) * 500;             /* ~ */
   /* ~ */  const py = noise(re * vl + ci + 1234) * 600;      /* ~ */
   /* ~ */  background(250, 100 + (re * 0.1), re);            /* ~ */
-  /* ~ */  fill(250, 20);                                    /* ~ */
+  /* ~ */  fill(250, 24);                                    /* ~ */
   /* ~ */  for (let i = 0; i < 10; i++) {                    /* ~ */
   /* ~ */   circle(px, py, 150 + i * 100);                   /* ~ */
   /* ~ */  }                                                 /* ~ */
@@ -62,20 +85,29 @@ function draw() {
   /* ~ */  text(txt, px, py);                                /* ~ */
   /* ~ */                                                    /* ~ */
   /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 }
 
 //////////////////////////////////
-// COPIAR Y PEGAR: esta funcion 
+// COPIAR Y PEGAR: TODA ESTA FUNCIONNNNNNNNNN
+// y llamarla justo despues de createCanvas!!!
 function comunicarVentana() {
 
   // evento message
   function actualizarReproduccion(e) {
+
+    // validacion de tipo
     if (!e.data || typeof e.data.activo !== "boolean") return;
-    e.data.activo ? loop() : noLoop();
+
+    // play/pausa
+    if (e.data.activo) loop();
+    else noLoop();
   }
 
   // evento resize
   function canvasResponsive() {
+
+    // dom
     const body = document.querySelector("body");
     const canv = document.querySelector("#defaultCanvas0");
     body.style.overflow = "hidden";
@@ -93,11 +125,11 @@ function comunicarVentana() {
     }
   }
 
-  // escuchar mensaje externo
-  window.addEventListener("message", (e) => actualizarReproduccion(e));
+  // mensaje externo
+  window.addEventListener("message", actualizarReproduccion);
 
   // adaptar medida (responsive)
-  window.addEventListener("resize", () => canvasResponsive());
+  window.addEventListener("resize", canvasResponsive);
 
   // ejecucion inicial
   canvasResponsive();

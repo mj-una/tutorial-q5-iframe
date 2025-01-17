@@ -1,27 +1,39 @@
 ////////////////////////////////////////////////////////////////////////
 //
 //
-// OPTIMIZACION:
-// ALMACENAMIENTO EN CACHE
-// 
-// texto de 4 lineas
-// explicando objetivo de este codigo
-// posibilidad de eliminar esta optimizacion
-// dificultad de asincronia, workers y cache
+// PLANTILLA: OPTIMIZACION CACHE (version con async/await)
+// sirve para decargar libreria p5 en memoria local
 //
-// link limpio: github.io
+// version sin comentarios (menos spam, pero se pierde el chisme):
+// https://github.com/mj-una/tutorial-p5-iframes/blob/limpio/optmCacheAsAw.js 
 //
 //////////////////////////////////
 
-// url de la libreria
-// EDITABLE: revisar skecths y colocar aqui el link utilizado
+/* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+/* ~ */ /* ~ ~ ~ ~ ~ ~ ~ Ajuste De La Url ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*     Copia y pega el link de p5, que esta     */ /* ~ */
+/* ~ */ /*  en la etiqueta <script> del head tus html.  */ /* ~ */
+/* ~ */                                                    /* ~ */
 const URL_P5 = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js";
+/* ~ */                                                    /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*     P.D: estoy preparando otro codigo        */ /* ~ */
+/* ~ */ /*    con un worker multitasking precarizado    */ /* ~ */
+/* ~ */ /*   que maneje varios links al mismo tiempo,   */ /* ~ */
+/* ~ */ /*     pero voy paso a paso, pq asincronia.     */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /*                                              */ /* ~ */
+/* ~ */ /* ~ El Event Loop De JS Es Una Obra De Harte ~ */ /* ~ */
+/* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 
 //////////////////////////////////
 // manejador evento install
 async function escribirCache(evento) {
   
-  // ejecucion previa a que termine el evento
+  // waitUntil asegura que todas las tareas se terminen de ejecutar
+  // antes de que termine el evento install. en este caso descargar p5
   evento.waitUntil( // *recibe una promesa (aprender "asincronia") !!!
     (async () => { // *invocacion inmediata (aprender "funciones iife")
 
@@ -85,9 +97,8 @@ async function interceptarSolicitud(evento) {
     })() // *funcion iife
   );
 };
-//
-////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////
 // EVENTOS INICIADORES DE EJECUCION
 
 // instalacion del worker (primera solicitud)
@@ -96,3 +107,8 @@ self.addEventListener("install", escribirCache);
 // intercepcion solicitudes de red (para evitar repeticion)
 self.addEventListener("fetch", interceptarSolicitud);
 
+//
+//
+// fin de la plantilla <3
+//
+////////////////////////////////////////////////////////////////////////
