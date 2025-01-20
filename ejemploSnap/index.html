@@ -29,7 +29,7 @@
         navigator.serviceWorker.register("../optmCacheAsAw.js").then(() => {
           console.log("[wrkr log: 0] worker registrado okiii!!!");
         }).catch(error => {
-          console.error("[wrkr log: -1] error al registrar worker:\n", error);
+          console.error("[wrkr log: 0] error al registrar worker:\n", error);
         });
       }
     </script>
@@ -44,15 +44,20 @@
     </header>
   
     <div class="tarjeta snap-item">
-      <h3>Primer Sketch<br>(hay muchos errores aun. solo es una demo pa&nbsp;mostrar&nbsp;la&nbsp;magia&nbsp;de&nbsp;css)</h3>
+      <h3>~ Primer Sketch ~</h3>
+      <p>
+        hay&nbsp;muchos&nbsp;errores&nbsp;aun.<br>
+        solo&nbsp;es&nbsp;una&nbsp;demo&nbsp;pa&nbsp;mostrar<br>
+        la&nbsp;magia&nbsp;de&nbsp;css&nbsp;vanila
+      </p>
       <iframe src="../sketchs/prueba1/index.html" id="sk1" class="sk-iframe"></iframe>
       <p>
-        Aqui dentro voy a poner un mini tutorial sobre como hacer responsive los&nbsp;canvas&nbsp;de&nbsp;p5
+        Aqui dentro voy a poner un mini tutorial sobre como preparar cada&nbsp;canvas&nbsp;(y&nbsp;hacerlos&nbsp;responsive)
       </p>
     </div>
 
     <div class="tarjeta snap-item">
-      <h3>Segundo Sketch</h3>
+      <h3>~ Segundo Sketch ~</h3>
       <iframe src="../sketchs/prueba2/index.html" id="sk2" class="sk-iframe"></iframe>
       <p>
         Este va a ser otro tutorial (el mas importante) sobre como funcionan los iframes y&nbsp;la&nbsp;api&nbsp;postMessage
@@ -60,43 +65,44 @@
     </div>
 
     <div class="tarjeta snap-item">
-      <h3>Tercer Sketch</h3>
+      <h3>~ Tercer Sketch ~</h3>
       <iframe src="../sketchs/prueba3/index.html" id="sk3" class="sk-iframe"></iframe>
       <p>
-        Aqui voy a explicar la optimizacion de la visibilidad, que se puede editar con el boton de abajo (compara los dos modos y&nbsp;usa&nbsp;el&nbsp;que&nbsp;prefieras)
+        Aqui voy a explicar la optimizacion de la visibilidad, que se puede editar el modo con el boton de abajo (compara&nbsp;los&nbsp;dos&nbsp;y&nbsp;usa&nbsp;el&nbsp;que&nbsp;prefieras)
       </p>
     </div>
 
     <div class="tarjeta snap-item">
-      <h3>Cuarto Sketch</h3>
+      <h3>~ Cuarto Sketch ~</h3>
       <iframe src="../sketchs/prueba4/index.html" id="sk4" class="sk-iframe"></iframe>
       <p>
-        Aqui voy a explicar la optimizacion de cache, que sirve para no tener que descargar varias veces la&nbsp;misma&nbsp;libreria
+        Aqui voy a explicar la optimizacion de cache, que sirve para no descargar varias veces la&nbsp;misma&nbsp;libreria
       </p>
     </div>
 
     <div class="tarjeta snap-item">
-      <h3>Quinto Sketch</h3>
+      <h3>~ Quinto Sketch ~</h3>
       <iframe src="../sketchs/prueba5/index.html" id="sk5" class="sk-iframe"></iframe>
       <p>
-        Y por ultimo haré una introduccion al snap-scroll nativo de css. No es necesario para los iframes, pero me parece muy util y cercano de aprender. En esta pagina esta aplicado (no muy prolijamente jaja pero se entiende)</a>
+        Y por ultimo haré una introduccion al snap-scroll nativo de css. No es necesario para los iframes, pero me parece muy util y cercano de aprender. En esta pagina esta aplicado (no muy prolijamente jaja pero&nbsp;se&nbsp;entiende)</a>
       </p>
     </div>
   
     <section class="modo snap-item">
+      <br>
+      <br>
       <h2>Modo vista parcial:</h2>
       <div class="modo-txt"></div>
       <button type="button" id="btnModo">Cambiar a<br>modo estricto</button>
       <p>
-        Para usar la plantilla anda al archivo "optmViewport.js" y&nbsp;ajusta&nbsp;la&nbsp;primera&nbsp;variable.
-      </p>  
-      <p>
-        Cualquier&nbsp;duda&nbsp;preguntame
+        Para editarlo anda a "optmViewport.js" y&nbsp;ajusta&nbsp;la&nbsp;primera&nbsp;variable.
       </p>
     </section>
     
     <section class="modo snap-item">
-      <h2>Link al codigo:</h2>
+      <br>
+      <br>
+      <h2>Link al codigo fuente:</h2>
       <p>
         <a href="https://github.com/mj-una/tutorial-p5-iframes" target="_blank">https://github.com/mj-una/tutorial-p5-iframes</a>
       </p>

@@ -1,7 +1,8 @@
 /*
 
   ver los estilos de: ".tarjeta iframe"
-  y leer explicacion al final del archivo
+  y leer explicacion al final del archivo.
+  todo el resto es reemplazable.
 
 */
 
@@ -32,8 +33,9 @@ html {
 }
 
 body {
-  width: 100%;
-  max-width: 60vh;
+  width: 100%; /* ocupa todo el ancho del viewport */
+  max-width: 60vh; /* pero si la pantalla es muy ancha */
+  /* se limita para que las tarjetas sean 100% visibles */
 
   margin: 0 auto;
 
@@ -60,17 +62,22 @@ header {
 }
 
 .tarjeta iframe {
-  width: 100%;
-  aspect-ratio: 5/6;  /*  <=== OJOPIOJO  */
-  /* explicacion al final de este archivo */
+  width: 100%; /* ocupa todo el ancho del contenedor */
+  aspect-ratio: 5/6; /* <=== OJOPIOJO A LA PROPORCION */
+  /* explicacion detallada al final de este archivo */
 }
 
 .tarjeta p {
   font-family: "comic-sans-italic";
+  margin-bottom: 10px;
 }
 
 .tarjeta a {
   font-family: "comic-sans-italic";
+}
+
+#aviso {
+  font-size: 1.17rem;
 }
 
 .modo {
@@ -95,8 +102,13 @@ header {
   background-color: rgb(237, 222, 221);
 }
 
+.modo button:hover {
+  color: rgb(93, 81, 81);
+}
+
 .modo button:active {
   background-color: rgb(241, 198, 197);
+  color: rgb(56, 46, 46);
 }
 
 footer {
