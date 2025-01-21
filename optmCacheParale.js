@@ -1,31 +1,29 @@
 ////////////////////////////////////////////////////////////////////////
 //
 //
-// PLANTILLA: OPTIMIZACION CACHE (version con async/await)
-// sirve para decargar libreria p5 en memoria local
+// PLANTILLA: OPTIMIZACION CACHE (version paralela)
+// sirve para decargar varias librerias en memoria local
 //
 // version sin comentarios (menos spam, pero se pierde el chisme):
-// https://github.com/mj-una/tutorial-p5-iframes/blob/limpio/optmCacheAsAw.js 
+// https://github.com/mj-una/tutorial-p5-iframes/blob/limpio/optmCacheParale.js 
 //
 //////////////////////////////////
 
 /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
-/* ~ */ /* ~ ~ ~ ~ ~ ~ ~ Ajuste De La Url ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+/* ~ */ /* ~ ~ ~ ~ ~ ~ Ajuste De Las Urls!! ~ ~ ~ ~ ~ ~ */ /* ~ */
 /* ~ */ /*                                              */ /* ~ */
 /* ~ */ /*                                              */ /* ~ */
-/* ~ */ /*     Copia y pega el link de p5, que esta     */ /* ~ */
-/* ~ */ /*  en la etiqueta <script> del head tus html.  */ /* ~ */
+/* ~ */ /*   Copia y pega en la lista todos los links   */ /* ~ */
+/* ~ */ /*   de las librerias que usas en tus sketchs   */ /* ~ */
 /* ~ */                                                    /* ~ */
 const LISTA_URLS = [
   "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js",
-  "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js",
 ];
 /* ~ */                                                    /* ~ */
 /* ~ */ /*                                              */ /* ~ */
-/* ~ */ /*     P.D: estoy preparando otro codigo        */ /* ~ */
-/* ~ */ /*    con un worker multitasking precarizado    */ /* ~ */
-/* ~ */ /*   que maneje varios links al mismo tiempo,   */ /* ~ */
-/* ~ */ /*     pero voy paso a paso, pq asincronia.     */ /* ~ */
+/* ~ */ /*   P.D: acordate que en un array de strings   */ /* ~ */
+/* ~ */ /*    se separa cada cadena con una coma (,)    */ /* ~ */
+/* ~ */ /*            y se usan comillas (")            */ /* ~ */
 /* ~ */ /*                                              */ /* ~ */
 /* ~ */ /*                                              */ /* ~ */
 /* ~ */ /* ~ El Event Loop De JS Es Una Obra De Harte ~ */ /* ~ */
@@ -48,13 +46,13 @@ async function escribirCache(evento) {
       console.log("[wrk etapa 1] cache abierta! agregando las librerías!");
 
       // iniciar promesas de cacheo
-      async function cachearUrl(_url) {
+      async function cachearUrl(url) {
         try {
-          await cache.add(_url); // retona promesa exitosa
-          console.log(`[wrkr log 1.2] ${_url} se guardo exitosamente.`);
+          await cache.add(url); // retona promesa exitosa
+          console.log(`[wrkr log 1.2] ${url} se guardo exitosamente.`);
         }
         catch (error) { // notifica error por separado
-          console.error(`[wrkr log 1.2] error al guardar ${_url}\n`, error);
+          console.error(`[wrkr log 1.2] error al guardar ${url}\n`, error);
         }
       }
 
