@@ -34,14 +34,14 @@ function escribirCache(evento) {
 
   // waitUntil asegura que todas las tareas se terminen de ejecutar
   // antes de que termine el evento install. en este caso descargar p5
-  evento.waitUntil( // recibe una promesa (aprender asincronia!!!)
+  evento.waitUntil( // *recibe una promesa (aprender "asincronia") !!!
 
 		// el objeto "caches" es parte de la api "cache storage"
 		// y permite escribir/leer recursos en memoria local del navegador.
 		// es en plural ("caches") porque contiene varios compartimientos...
 		// ...diferenciables segun un nombre (en este caso: "cache-p5-iframes")
     caches.open("cache-p5-iframes").then(cache => { // #PROMESA INTERMEDIA
-      console.log("[wrkr log: 1] cache abierta! agregando el codigo!");
+      console.log("[wrkr log: 1] cache abierta! agregando la librería!");
 
 			// descarga codigo desde la url y lo guarda en memoria
 			// (internamente hace: "fetch" y luego "cache.put")
@@ -58,9 +58,10 @@ function interceptarSolicitud(evento) {
 	// en caso que NO se trate del link de la libreria: se continua fetch
   if (evento.request.url !== URL_P5) return;
 
-	// en caso contrario (la url coincide): se intercepta (no se realiza)
-	// y se intentara responder con informacion de la cache
-	evento.respondWith(
+	// en caso contrario (la url coincide): se intercepta la solicitud
+  // y se intenta responder con informacion desde la cache (sin fetch)
+
+	evento.respondWith( // *recibe una promesa (aprender "asincronia")
 
 		// revisa que exista la misma solicitud
 		caches.match(evento.request).then(respuesta0 => { // #PROMESA 0
@@ -71,22 +72,27 @@ function interceptarSolicitud(evento) {
 				return respuesta0; // ...retorna la copia de cache
 			}
 
-			// si no existe...
-			// ...hubo algun error, asi que se solicita de nuevo
-			return fetch(evento.request).then(respuesta => { // #PROMESA 1. oki
-				console.log("[wrkr log: 3] resolviendo. nueva solicitud!");
+      // si no existe, hubo algun error...
+      console.log(`[wrkr log: 3] error con ${evento.request.url}. manejo:`);
+
+			// ...y se intenta resolver con un nuevo fetch (repite solicitud)
+			return fetch(evento.request).then(respuesta1 => { // #PROMESA 1. oki
+        console.log("[wrkr log: 3.1] resolviendo. nueva solicitud enviada!");
 
 				// intenta acceder al compartimiento de la cache...
 				return caches.open("cache-p5-iframes").then(cache => { // #PROMESA 2
-					console.log("[wrkr log: 4] resolviendo. almacenando respuesta!");	
+					console.log("[wrkr log: 3.2] resolviendo. almacenando respuesta!");
 
-					// ...y lo sobreescribe (clone pq "respuesta" es un flujo)
-					cache.put(evento.request, respuesta.clone());
+					// ...y lo sobreescribe. se usa clone para fijar texto temporal
+					// pq fetch ("respuesta1") es un flujo de datos, para una sola lectura
+					cache.put(evento.request, respuesta1.clone()).then(() => { // #PROM. 3
+						console.log("[wrkr log: 3.3] todo oki. problema resuelto!");
+					});
 
 					// se resuleve fetch con nueva respuesta recibida
-					return respuesta; // #PROMESA 3. FINAL
+					return respuesta1; // finalmente respondWith recibe PROMESA 1
 				});
-			}).catch(error => { // #PROMESAS 1 a 3. resolucion nottt
+			}).catch(error => { // caso nottt
 				console.log("[wrkr log: 5] no se pudo resolver. error:\n", error);
 			});
 		})

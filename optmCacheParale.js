@@ -43,7 +43,7 @@ async function escribirCache(evento) {
       // es en plural ("caches") porque contiene varios compartimientos...
       // ...diferenciables segun un nombre (en este caso: "cache-p5-iframes")
       const cache = await caches.open("cache-p5-iframes"); // #PROMESA INICIAL
-      console.log("[wrk etapa 1] cache abierta! agregando las librerías!");
+      console.log("[wrk log 1] cache abierta! agregando las librerías!");
 
       // iniciar promesas de cacheo
       async function cachearUrl(url) {
@@ -89,8 +89,8 @@ async function interceptarSolicitud(evento) {
   // salida temprana del manejador y se continua el fetch
   if (!LISTA_URLS.includes(evento.request.url)) return;
 
-  // en caso contrario (alguna url coincide): se intercepta solicitud
-  // y se intenta responder con informacion de la cache (sin fetch)
+  // en caso contrario (alguna url coincide): se intercepta la solicitud
+  // y se intenta responder con informacion desde la cache (sin fetch)
 
   evento.respondWith( // *recibe una promesa (aprender "asincronia")
     (async () => { // *invocacion inmediata (aprender "funciones iife")
@@ -116,11 +116,12 @@ async function interceptarSolicitud(evento) {
 
         // intenta acceder al compartimiento de la cache...
         const cache = await caches.open("cache-p5-iframes"); // #PROMESA 2
+        console.log("[wrkr log: 3.2] resolviendo. almacenando respuesta!");
 
         // ...y lo sobreescribe. se usa clone para fijar texto temporal
         // pq fetch ("respuesta1") es un flujo de datos, para una sola lectura
         await cache.put(evento.request, respuesta1.clone()); // #PROMESA 3
-        console.log("[wrkr log: 3.2] resolviendo. almacenando respuesta!");
+        console.log("[wrkr log: 3.3] todo oki. problema resuelto!");
 
         // se resuleve fetch con nueva respuesta recibida
         return respuesta1; // finalmente respondWith recibe PROMESA 1
