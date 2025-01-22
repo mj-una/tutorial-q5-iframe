@@ -54,7 +54,7 @@ function draw() {
   /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En EL Draw!!! ~ ~ ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ ~ ~ Dibujitos De Ejemplo ~ ~ ~ ~ ~ ~ */ /* ~ */
   /* ~ */                                                    /* ~ */
-  /* ~ */  const vl = 0.002;                                 /* ~ */
+  /* ~ */  const vl = 0.003;                                 /* ~ */
   /* ~ */  const re = (frameCount * 3) % 255;                /* ~ */
   /* ~ */  if (re === 0) return;                             /* ~ */
   /* ~ */  const ci = ceil((frameCount * 3) / 255) * 1234;   /* ~ */

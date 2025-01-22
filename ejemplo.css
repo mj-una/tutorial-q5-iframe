@@ -65,6 +65,7 @@ header {
   width: 100%; /* ocupa todo el ancho del contenedor */
   aspect-ratio: 5/6; /* <=== OJOPIOJO A LA PROPORCION */
   /* explicacion detallada al final de este archivo */
+  pointer-events: none; /* q5 tiene preventDefault */
 }
 
 .tarjeta p {
