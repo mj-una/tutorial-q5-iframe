@@ -34,7 +34,7 @@ INSTRUCCIONES PASO A PASO
 
   - >OPCIONAL -> los atributos ```sandbox="allow-scripts allow-same-origin"```, ```referrerpolicy="same-origin"``` y ```crossorigin="anonymous"``` para **seguridad y privacidad**. Limita comportamientos peligrosos, protege datos sensibles y evita enviar información extra en solicitudes externas. **Pero ojo!!!** podrían llegar a bloquear varias cosas, como la captura de eventos o la carga de librerías externas. Investiga sobre el tema y decide de acuerdo a tu contexto. En el ejemplo —como se trata de un código que conozco— prefiero no restringir nada.
 
-  - >OPCIONAL -> **contenido html alternativo** para mostrar caso de error al cargar el iframe. Se coloca entre la etiqueta de apertura y la de cierre (puede ser un texto, un una imagen, otro iframe, etc).
+  - >OPCIONAL -> **contenido html alternativo** para mostrar caso de error al cargar el iframe. Se coloca entre la etiqueta de apertura y la de cierre (puede ser un texto, una imagen, otro iframe, etc).
 
   - >OPCIONAL -> no uses los atributos ```witdh``` y ```height```. Es mucho mejor manejar las medidas desde css!!!
 

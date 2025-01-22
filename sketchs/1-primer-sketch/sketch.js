@@ -60,7 +60,7 @@ function draw() {
   /* ~ */  const ci = ceil((frameCount * 3) / 255) * 1234;   /* ~ */
   /* ~ */  const px = noise(re * vl + ci) * 500;             /* ~ */
   /* ~ */  const py = noise(re * vl + ci + 1234) * 600;      /* ~ */
-  /* ~ */  background(250, 100 + (re * 0.1), re);            /* ~ */
+  /* ~ */  background(250, 125 - (re * 0.1), 255 - re);      /* ~ */
   /* ~ */  fill(250, 24);                                    /* ~ */
   /* ~ */  for (let i = 0; i < 10; i++) {                    /* ~ */
   /* ~ */   circle(px, py, 150 + i * 100);                   /* ~ */
@@ -68,7 +68,7 @@ function draw() {
   /* ~ */  fill(0);                                          /* ~ */
   /* ~ */  textSize(44);                                     /* ~ */
   /* ~ */  textAlign(CENTER, CENTER);                        /* ~ */
-  /* ~ */  text("Q5JS", px, py);                            /* ~ */
+  /* ~ */  text("Q5JS", px, py);                             /* ~ */
   /* ~ */                                                    /* ~ */
   /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ >[ $$ ]< ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */

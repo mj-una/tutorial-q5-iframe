@@ -28,7 +28,7 @@
 }
 
 html {
-  background-color: rgb(240, 174, 230);
+  background-color: rgb(240, 174, 211);
   font-family: "comic-sans", sans-serif;
 }
 
@@ -54,7 +54,7 @@ header {
   padding: 1vh;
   border-radius: 1vh ;
 
-  background-color: rgb(241, 198, 197);
+  background-color: rgb(231, 192, 234);
 }
 
 .tarjeta h3 {
@@ -100,11 +100,11 @@ header {
   
   font-size: max(18px, 1.5rem);
 
-  background-color: rgb(237, 222, 221);
+  background-color: rgb(233, 221, 237);
 }
 
 .modo button:active {
-  background-color: rgb(241, 198, 197);
+  background-color: rgb(231, 192, 234);
 }
 
 footer {
