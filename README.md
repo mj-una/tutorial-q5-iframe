@@ -8,32 +8,35 @@ INSTRUCCIONES PASO A PASO
 
 2.  **Hace la pagina que queras**: metiendole diseño, tipografias, estilos, interacciones, etc. Cada sketch se incrustará dentro de un iframe, que es como un bloque cualquiera (podes maquetarlo como si fuera un div), pero tene en cuenta que **siempre debe mantener la misma proporcion de aspecto que el canvas de q5** (lee la explicacion de [ejemplo.css](https://github.com/mj-una/tutorial-q5-iframes/blob/main/ejemplo.css)).
 
-3.  **Copia el archivo [optmCacheParale.js](https://github.com/mj-una/tutorial-q5-iframes/blob/main/optmCacheParale.js)** y pegalo en la raiz de tu proyecto. Luego ajusta la lista del principio. Hay que pegar ```"entre", "comillas", "y", "separados", "por", "coma"``` los links de la/s librerias/s que usas en tus sketchs. Estos son los que estan en las etiquetas ```<script>``` del ```<head>``` de los .html (generalmente son la libreria de q5 o la de p5.sound). Es importante que en la lista de urls coloques exactamente las mismas versiones.
+3.  **Copia el archivo [optmCacheParale.js](https://github.com/mj-una/tutorial-q5-iframes/blob/main/optmCacheParale.js)** y pegalo en la raiz de tu proyecto. Luego ajusta la lista del principio. Hay que pegar ```"entre", "comillas", "y", "separados", "por", "coma"``` los links de la/s libreria/s que usas en tus sketchs. Estos son los que estan en las etiquetas ```<script>``` del ```<head>``` de los .html (generalmente son la libreria de q5 o la de p5.sound). Es importante que en la lista de urls coloques exactamente las mismas versiones.
 
-4.  **Copia el bloque de codigo marcado como "\<!-- OPTIMIZACION DE CACHE -->"** desde el [index.html](https://github.com/mj-una/tutorial-q5-iframes/blob/main/index.html) de este proyecto hacia el index.html de la raiz tu proyecto. Buscalo justo antes del final del ```<head>```, son 7 lineas de javascript.
+4.  **Copia el bloque de codigo marcado como "\<!-- OPTIMIZACION DE CACHE -->"** desde este [index.html](https://github.com/mj-una/tutorial-q5-iframes/blob/main/index.html) hacia el index.html de la raiz tu proyecto. Buscalo justo antes del final del ```<head>```, son 7 lineas de javascript.
 
 5. **Copia el archivo [optmViewport.js](https://github.com/mj-una/tutorial-q5-iframes/blob/main/optmViewport.js)** y pegalo en la raiz de tu proyecto. Luego cambia la primera variable a ```true``` o ```false``` segun el modo que prefieras (mas info [aqui](https://mj-una.github.io/tutorial-q5-iframes/#explicacion)). En este archivo ademas tenes que borrar los ultimos 5 bloques del codigo (fijate los comentarios).
 
-6.  **Prepara tus sketchs:** coloca cada uno en una carpeta con su nombre (no usar ni la letra "ñ" ni tildes ni espacios; solo letras ascii, numeros y guiones).
-- > DENTRO DE CADA CARPETA: Te recomiendo que copies el [index.html](https://github.com/mj-una/tutorial-q5-iframes/tree/main/sketchs/1-primer-sketch/index.html) de los sketchs de ejemplo y ajustes solamente los links a librerias en el ```<head>```. **No agregues estilos, ni contenido en el body.** Para el codigo javascript segui las instrucciones de [sketch.js](https://github.com/mj-una/tutorial-q5-iframes/tree/main/sketchs/1-primer-sketch/sketch.js). Ahi encontraras una funcion que debes copiarla completa y llamarla justo despues de createCanvas. Los pasos importantes estan comentados con este signo: ```[ $$ ]```.
+6.  **Prepara tus sketchs:** coloca los archivos en una carpeta con el nombre del sketch (no usar ni la letra "ñ" ni tildes ni espacios; solo letras ascii, numeros y guiones).
 
-7. **Crea una subcarpeta "sketchs"** en la raiz de tu proyecto y pegale adentro las carpetas contenedoras de cada uno de los sketchs (que en su interior deben de tener: al menos un index.html y un sketch.js, y aparte: todos los archivos y subcarpetas extras que cada skecth pueda necesitar).
+- > DENTRO DE CADA CARPETA CONTENEDORA -> Te recomiendo que copies el [index.html](https://github.com/mj-una/tutorial-q5-iframes/tree/main/sketchs/1-primer-sketch/index.html) de los sketchs del ejemplo y que ajustes solamente los links a librerias en el ```<head>```. **No agregues estilos, ni contenido en el body.** Para el codigo javascript segui las instrucciones de [sketch.js](https://github.com/mj-una/tutorial-q5-iframes/tree/main/sketchs/1-primer-sketch/sketch.js). Ahi encontraras una funcion que debes copiarla completa y llamarla justo despues de createCanvas. Los pasos importantes estan comentados con este signo: ```[ $$ ]```.
 
-8. **IMPORTANTISIMOOO:** ajusta las etiquetas ```<iframe>``` en tu pagina. Estas son _ventanas_ desde las que se visualizan tus dibujos. Deben tener:
+7. **Crea una subcarpeta "sketchs"** en la raiz de tu proyecto y pegale adentro todas las carpetas contenedoras del paso anterior (que en su interior deben de tener al menos: un index.html y un sketch.js; y de extra: todos los archivos y subcarpetas que cada skecth pueda necesitar).
 
-  - >OBIGATORIO -> **el atributo ```src``` con la ruta al .html del sketch** (como en la plantilla: ```src="sketchs/3-tercer-sketch/index.html"```, pero con la ruta a tu propio archivo)
+8. **IMPORTANTISIMOOO:** ajusta las etiquetas ```<iframe>``` de tu pagina principal. Estas son _mini ventanas incrustadas_ desde las que se visualizan tus dibujos. Deben tener:
+
+  - >OBIGATORIO -> **el atributo ```src``` con la ruta al .html del sketch** (como en la plantilla: ```src="sketchs/3-tercer-sketch/index.html"```, pero con la ruta a tu propio archivo).
 
   - >OBIGATORIO -> **el atributo ```class="sk-iframe"```** para que pueda ser capturado desde optmViewport.js y desde css. Podes cambiar el valor, pero recuerda modificar los demas archivos tambien.
 
-  - >OPCIONAL -> el atributo ```id``` para **personalizaciones**. Por si necesitas hacer cosas mas especificas, como ponerle medidas distintas a cada iframe.
+  - >OPCIONAL -> el atributo ```id``` para **personalizaciones**. Por si necesitas ponerle estilos distintos a cada iframe o capturarlos desde el dom.
   
-  - >OPCIONAL -> el atributo ```loading="lazy"``` para **performance**. Esto hace que el contenido sea solicitado recien cuando el iframe se vaya acercando al viewport, lo que reduce el tiempo de arranque de la pagina. **Pero cuidado!!!** no lo agregues en los iframes que sean visibles desde el inicio (fijate en el ejemplo: los dos primeros iframes no lo tienen). 
+  - >OPCIONAL -> el atributo ```loading="lazy"``` para **performance**. Esto hace que el contenido sea solicitado recien cuando el iframe se vaya acercando al viewport, lo que reduce el tiempo de arranque de la pagina. **Pero ojo!!!** no lo agregues en los iframes que sean visibles desde el inicio (fijate en el ejemplo: los dos primeros iframes no lo tienen). 
 
-  - >OPCIONAL -> el atributo ```title="Escribe aqui el titulo de tu sketch"``` para **accesibilidad**. Asi los lectores de pantalla pueden retornar algo.
+  - >OPCIONAL -> los atributos ```title="Nombre de tu sketch"``` y ``` aria-label="Descripcion de tu sketch"``` para **accesibilidad**. Asi los lectores de pantalla pueden retornar algo.
 
-  - >OPCIONAL -> los atributos ```sandbox="allow-scripts allow-same-origin" referrerpolicy="same-origin" crossorigin="anonymous"``` para **seguridad y privacidad**, pero podrian llegar a bloquear ciertos comportamientos (como la captura de eventos o la carga de librerias externas). Investiga sobre el tema y decide de acuerdo a tu contexto. En el ejemplo —como se trata de un codigo que conozco— prefiero no restringir nada.
+  - >OPCIONAL -> los atributos ```sandbox="allow-scripts allow-same-origin"```, ```referrerpolicy="same-origin"``` y ```crossorigin="anonymous"``` para **seguridad y privacidad**. Limita comportamientos peligrosos, protege datos sensibles y evita enviar información extra en solicitudes externas. **Pero ojo!!!** podrían llegar a bloquear varias cosas, como la captura de eventos o la carga de librerías externas. Investiga sobre el tema y decide de acuerdo a tu contexto. En el ejemplo —como se trata de un código que conozco— prefiero no restringir nada.
 
   - >OPCIONAL -> **contenido html alternativo** para mostrar caso de error al cargar el iframe. Se coloca entre la etiqueta de apertura y la de cierre (puede ser un texto, un una imagen, otro iframe, etc).
+
+  - >OPCIONAL -> no uses los atributos ```witdh``` y ```height```. Es mucho mejor manejar las medidas desde css!!!
 
   - Ejemplo:
     ```
