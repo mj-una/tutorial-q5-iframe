@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js"></script>
-  <meta charset="utf-8" />
-  <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  </style>
-  <title>Sketch prueba</title>
-</head>
-<body>
-  <main></main>
-  <script>
 
 ////////////////////////////////////////////////////////////////////
 //
 // PLANTILLA DE SKETCH
 // para incluir dentro de un iframe.
 //
-// copiar y pegar el html sin cambiar nada,
-// todos los estilos necesarios ya estan incluidos.
+// copia y pega el html sin agregar nada,
+// solo cambia los links de javascript en caso que sea necesario.
+// (por ejemplo si tenes varios archivos .js o si usas p5.sound)
 //
-// la funcion "comunicarSketch" sirve para dos cosas:
-// 1) adapta el canvas a la medida del contexto (el iframe)
-// 2) recibe un mensaje booleano para activar o desctivar el loop
-// hay que copiarla completa. y no olvides la llamada inical!!! [$]
+// todos los estilos css ya estan incluidos, no los toques a menos
+// que entiendas bien lo que estas haciendo (es un iframe)
 //
+// segui las intrucciones marcadas con "[ $$ ]" buscalas con ctrl+f.
 // esta plantilla es una base, si aprendes a usar la api postMessage
-// podes hacer muchiiismas otras cosas. recomendacion 100000% 
+// podes hacer muchiiismas otras cosas. recomendadisimo 100000% 
+//
+// la funcion "comunicarSketch" sirve para:
+// 1) adaptar el canvas a la medida del contexto (el iframe).
+// 2) recibir un mensaje booleano para activar o desctivar el loop.
+// hay que copiarla completa. y no olvides la llamada inical! [ $$ ]
 //
 //////////////////////////////////
 
@@ -40,16 +28,15 @@
   /* ~ */    // VARIABLES GLOBALES, PRELOAD, ETC, ETC. //    /* ~ */
   /* ~ */                                                    /* ~ */
   /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
-  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ >[ $$ ]< ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 
 //////////////////////////////////
 function setup() {
 
-  // la medidas bla bla3efff
-  // wef efwfewf wfqqf g5 rgerg  ww wefweff aas asdd wef
-  // cerfe ewf we ewfon nij efoefnow efwefof ewewfffewf eww
-  createCanvas(500, 600); // resolucion interna (ojo a proporcion)
-  comunicarVentana(); // <== se llama una vez creado el canvas [$]
+  // resolucion interna. no tamaño final, eso se maneja
+  // desde el css de la pagina principal (fuera de este iframe)
+  createCanvas(500, 600); // EDITABLE!! OJO A LA PROPORCION!! [ $$ ]
+  comunicarVentana(); // <= se llama una vez creado el canvas [ $$ ]
 
   /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ Cualquier Cosa En El Setup!! ~ ~ ~ ~ */ /* ~ */
@@ -57,7 +44,7 @@ function setup() {
   /* ~ */   // INICIALIZACIONES, AJUSTES GENERALES, ETC //   /* ~ */
   /* ~ */                                                    /* ~ */
   /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */
-  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ >[ $$ ]< ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 }
 
 //////////////////////////////////
@@ -84,16 +71,16 @@ function draw() {
   /* ~ */  textAlign(CENTER, CENTER);                        /* ~ */
   /* ~ */  text(txt, px, py);                                /* ~ */
   /* ~ */                                                    /* ~ */
-  /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */ 
-  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  **  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
+  /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */
+  /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ >[ $$ ]< ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 }
 
 //////////////////////////////////
-// COPIAR Y PEGAR: TODA ESTA FUNCIONNNNNNNNNN
-// y llamarla justo despues de createCanvas!!!
+// COPIA Y PEGA: TODA ESTA FUNCIONnnNNnN [ $$ ]
+// y llamala justo despues de createCanvas!!!
 function comunicarVentana() {
 
-  // evento message
+  // manejador evento message
   function actualizarReproduccion(e) {
 
     // validacion de tipo
@@ -104,17 +91,21 @@ function comunicarVentana() {
     else noLoop();
   }
 
-  // evento resize
+  // manejador evento resize
   function canvasResponsive() {
 
     // dom
     const body = document.querySelector("body");
     const canv = document.querySelector("#defaultCanvas0");
+
+    // centrar
     body.style.overflow = "hidden";
     body.style.display = "flex";
     body.style.justifyContent = "center";
     body.style.alignItems = "center";
     body.style.height = "100vh";
+
+    // responsive
     if (windowWidth * height > windowHeight * width) {
       canv.style.height = "100vh";
       canv.style.width = (100 / height) * width + "vh";
@@ -125,20 +116,16 @@ function comunicarVentana() {
     }
   }
 
-  // mensaje externo
+  // evento message (info desde contexto externo)
   window.addEventListener("message", actualizarReproduccion);
 
-  // adaptar medida (responsive)
+  // evento resize (para adaptar medida del canvas)
   window.addEventListener("resize", canvasResponsive);
 
-  // ejecucion inicial
+  // primera ejecucion
   canvasResponsive();
-  noLoop();
-}
+  noLoop(); // inicia pausado hasta que llegue mensaje
+} // fin de "comunicarVentana()". copiar hasta aca [ $$ ]
 
 // fin de la plantilla. saludos. 
 ////////////////////////////////////////////////////////////////////
-
-  </script>
-</body>
-</html>

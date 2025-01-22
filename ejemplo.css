@@ -8,12 +8,12 @@
 
 @font-face {
   font-family: "comic-sans";
-  src: url('fuentes/comic-sans.ttf') format('truetype');
+  src: url("fonts/comic-sans.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "comic-sans-italic";
-  src: url('fuentes/comic-sans-italic.ttf') format('truetype');
+  src: url("fonts/comic-sans-italic.ttf") format("truetype");
 }
 
 * {
