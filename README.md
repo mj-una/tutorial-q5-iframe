@@ -68,4 +68,4 @@ Y quiero publicarlos en una version mas avanzada de esta misma plantilla que inc
 
 <br>
 
-**Tanto los textos como los codigos los escribi yo.<br>Publicado bajo cc0. Al dominio publico.<br>No es necesario citar autoria.**
+**Los textos y el codigos los escribi yo.<br>Publicado bajo cc0. Al dominio publico.<br>No es necesario citar autoria.**
