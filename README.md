@@ -19,10 +19,32 @@ INSTRUCCIONES PASO A PASO
 
 7. **Crea una subcarpeta "sketchs"** en la raiz de tu proyecto y pegale adentro las carpetas contenedoras de cada uno de los sketchs (que en su interior deben de tener: al menos un index.html y un sketch.js, y aparte: todos los archivos y subcarpetas extras que cada skecth pueda necesitar).
 
-8. **IMPORTANTISIMOOO:** ajusta las etiquetas ```<iframe>``` en tu pagina. Estas son las ventanas desde las que se visualizaran tus dibujos. Deben tener:
-  - >OBIGATORIO -> **un atributo ```src``` con la ruta al .html del sketch** (como en la plantilla: ```src="sketchs/2-segundo-sketch/index.html"```, pero con la ruta a tu propio archivo)
-  - >OBIGATORIO -> **un atributo class con valor "sk-iframe"** para que pueda ser capturado desde optmViewport.js y desde css.
-  - >OPCIONAL -> un id por si necesitas hacer cosas mas especificas (por ejemplo, ponerle medidas distintas a cada iframe).
+8. **IMPORTANTISIMOOO:** ajusta las etiquetas ```<iframe>``` en tu pagina. Estas son _ventanas_ desde las que se visualizan tus dibujos. Deben tener:
+
+  - >OBIGATORIO -> **el atributo ```src``` con la ruta al .html del sketch** (como en la plantilla: ```src="sketchs/3-tercer-sketch/index.html"```, pero con la ruta a tu propio archivo)
+
+  - >OBIGATORIO -> **el atributo ```class="sk-iframe"```** para que pueda ser capturado desde optmViewport.js y desde css. Podes cambiar el valor, pero recuerda modificar los demas archivos tambien.
+
+  - >OPCIONAL -> el atributo ```id``` para **personalizaciones**. Por si necesitas hacer cosas mas especificas, como ponerle medidas distintas a cada iframe.
+  
+  - >OPCIONAL -> el atributo ```loading="lazy"``` para **performance**. Esto hace que el contenido sea solicitado recien cuando el iframe se vaya acercando al viewport, lo que reduce el tiempo de arranque de la pagina. **Pero cuidado!!!** no lo agregues en los iframes que sean visibles desde el inicio (fijate en el ejemplo: los dos primeros iframes no lo tienen). 
+
+  - >OPCIONAL -> el atributo ```title="Escribe aqui el titulo de tu sketch"``` para **accesibilidad**. Asi los lectores de pantalla pueden retornar algo.
+
+  - >OPCIONAL -> los atributos ```sandbox="allow-scripts allow-same-origin" referrerpolicy="same-origin" crossorigin="anonymous"``` para **seguridad y privacidad**, pero podrian llegar a bloquear ciertos comportamientos (como la captura de eventos o la carga de librerias externas). Investiga sobre el tema y decide de acuerdo a tu contexto. En el ejemplo —como se trata de un codigo que conozco— prefiero no restringir nada.
+
+  - >OPCIONAL -> **contenido html alternativo** para mostrar caso de error al cargar el iframe. Se coloca entre la etiqueta de apertura y la de cierre (puede ser un texto, un una imagen, otro iframe, etc).
+
+  - Ejemplo:
+    ```
+    <iframe
+      src="sketchs/3-tercer-sketch/index.html"
+      class="sk-iframe"
+      id="sk3"
+      loading="lazy">
+      Hubo un error! (contenido alternativo)
+    </iframe>
+    ```
 
 9. LISTO ! ! ! **Para subirlo como una pagina** en github segui [este tutorial](https://github.com/mj-una/tutorial-p5-responsive/blob/main/github.md) (desde el paso 5 al 17).
 
