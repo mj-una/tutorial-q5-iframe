@@ -1,5 +1,7 @@
 # <br>tutorial-p5-iframes
 
+<br>
+
 INSTRUCCIONES PASO A PASO
 
 1.  **Crea tu propio proyecto**: una carpeta con un index.html en su nivel principal (la raiz).
@@ -27,9 +29,14 @@ INSTRUCCIONES PASO A PASO
 
 <hr>
 
-Link del ejemplo: [https://mj-una.github.io/tutorial-p5-iframes/](https://mj-una.github.io/tutorial-p5-iframes/)
+<br>
+
+Link del ejemplo:<br>[https://mj-una.github.io/tutorial-p5-iframes/](https://mj-una.github.io/tutorial-p5-iframes/)
 
 <hr>
+
+<br>
+
 Recomiendo muchisimo aprender a usar iframes y la api postMessage. Esta el codigo comentado paso a paso explicado en "[optmViewport.js](https://github.com/mj-una/tutorial-p5-iframes/blob/main/optmViewport.js)" para una comunicacion basica entre la pagina principal y los sketchs anidados.
 
 Se pueden hacer cosas muuuy geniales con esto, por ejemplo que al hacer click en la pagina principal suceda algo dentro del sketch, o escribir en un input y que se vayan dibujandose las letras. Para ese tipo de cosas hay que aprender sobre los eventos del navegador.
@@ -37,6 +44,8 @@ Se pueden hacer cosas muuuy geniales con esto, por ejemplo que al hacer click en
 Me gusta el concepto porque resuelve temas dificiles (como los contextos de ejecucion) con herramientas simples de usar. No se necesita mucho javascript, un par de lineas para enviar la informacion y otro par para recibirla. El resto depende de meterle imaginacion con p5 y armar una pagina bonita con css. 
 
 <hr>
+
+<br>
 
 Para entender la parte de optimizacion de cache es necesario sufrir la asincronia. Inclui tres versiones del worker:
 - uno usando solo promesas
@@ -49,10 +58,14 @@ Yo aprendi a partir de este video: [4tomik en youtube](https://youtu.be/dX2lThXc
 
 <hr>
 
+<br>
+
 Ahora estoy preparando unos videitos para mostrar como copiar y pegar el codigo. Voy a usar la misma plantilla pero con una libreria que se llama q5 (que optimiza todo para que sea mas liviano).
 
 Y quiero publicarlos en una version mas avanzada de esta misma plantilla que incluya lazy loading para los iframes y un manejo preciso del snap-scroll (calculado con javascript).
 
 <hr>
+
+<br>
 
 **Tanto los textos como los codigos los escribi yo.<br>Publicado bajo cc0. Al dominio publico.<br>No es necesario citar autoria.**
