@@ -137,7 +137,7 @@ const textoModoEstricto = `<p>Fijate ahora, los sketchs se activan recien cuando
 <p>Esto no solo es una optimizacion de recursos, sino que ademas fuerza a las personas a detenerse frente a cada contenido en especifico. Las focalizaciones de este tipo, mas el snap scroll, son la base del diseño ux de tiktok o&nbsp;los&nbsp;reels de&nbsp;instagram.</p>`;
 
 const textoModoParcial = `<p>No se nota, pero los sketchs se pausan cada vez que salen de la pantalla. Asi se ahorran muchiiismos recursos, porque el loop de q5 es pesado y puede colapsar la pagina si varios dibujos se ejecutan al&nbsp;mismo&nbsp;tiempo.</p>
-<p>Y agrego otra opcion (muy tipica en ux de scroll infinito) para que los sketchs se&nbsp;ejecuten recien cuando sean&nbsp;totalmente&nbsp;visibles. <br>Probala aqui:</p>`;
+<p>Y agrego otro modo (muy tipico en ux de scroll infinito) para que los sketchs se&nbsp;ejecuten recien cuando sean&nbsp;totalmente&nbsp;visibles. <br>Probalo aqui:</p>`;
 
 // BORRAR BLOQUE 4/5: iniciar texto
 (() => {
