@@ -28,7 +28,7 @@
 }
 
 html {
-  background-color: rgb(240, 174, 211);
+  background-color: hsl(317, 22%, 77%);
   font-family: "comic-sans", sans-serif;
 }
 
@@ -54,7 +54,7 @@ header {
   padding: 1vh;
   border-radius: 1vh ;
 
-  background-color: rgb(231, 192, 234);
+  background-color: rgb(243, 208, 246);
 }
 
 .tarjeta h3 {
@@ -66,6 +66,7 @@ header {
   aspect-ratio: 5/6; /* <=== OJOPIOJO A LA PROPORCION */
   /* explicacion detallada al final de este archivo */
   pointer-events: none; /* q5 tiene preventDefault */
+  /* tema a considerar mas adelante (para eventos) */
 }
 
 .tarjeta p {
@@ -100,11 +101,11 @@ header {
   
   font-size: max(18px, 1.5rem);
 
-  background-color: rgb(233, 221, 237);
+  background-color: hsl(285, 31%, 90%);
 }
 
 .modo button:active {
-  background-color: rgb(231, 192, 234);
+  background-color: rgb(243, 208, 246);
 }
 
 footer {
