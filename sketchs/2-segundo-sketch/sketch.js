@@ -65,11 +65,10 @@ function draw() {
   /* ~ */  for (let i = 0; i < 10; i++) {                    /* ~ */
   /* ~ */   circle(px, py, 150 + i * 100);                   /* ~ */
   /* ~ */  }                                                 /* ~ */
-  /* ~ */  const txt = isLooping().toString().toUpperCase()  /* ~ */
   /* ~ */  fill(0);                                          /* ~ */
   /* ~ */  textSize(44);                                     /* ~ */
   /* ~ */  textAlign(CENTER, CENTER);                        /* ~ */
-  /* ~ */  text(txt, px, py);                                /* ~ */
+  /* ~ */  text("Q5JS", px, py);                            /* ~ */
   /* ~ */                                                    /* ~ */
   /* ~ */ /* ~ ~ Borra Este Bloque Y Coloca Tu Codigo ~ ~ */ /* ~ */
   /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ ~ ~ >[ $$ ]< ~ ~ ~ ~ ~ ~ ~ ~ ~ */ /* ~ */

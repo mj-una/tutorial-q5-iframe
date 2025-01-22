@@ -6,7 +6,7 @@ INSTRUCCIONES PASO A PASO
 
 1.  **Crea tu propio proyecto**: una carpeta con un index.html en su nivel principal (la raiz).
 
-2.  **Hace la pagina que queras**: metiendole diseño, tipografias, estilos, interacciones, etc. Tene en cuneta que cada sketch se incrustará dentro de un iframe, que podes maquetarlo como un bloque cualquiera pero siempre tiene que mantener **la misma proporcion de aspecto que el canvas de q5** (lee la explicacion de "[ejemplo.css](https://github.com/mj-una/tutorial-q5-iframes/blob/main/ejemplo.css)"). Casi todos los estilos son para el ejemplo de la pagina que hice, excepto los que estan marcados que son los realmente importantes.
+2.  **Hace la pagina que queras**: metiendole diseño, tipografias, estilos, interacciones, etc. Tene en cuneta que cada sketch se incrustará dentro de un iframe, que podes maquetarlo como un bloque cualquiera pero siempre tiene que mantener **la misma proporcion de aspecto que el canvas de q5** (lee la explicacion de "[ejemplo.css](https://github.com/mj-una/tutorial-q5-iframes/blob/main/ejemplo.css)"). Casi todos los estilos son para el ejemplo de la pagina que hice, excepto los que estan comentados (que son los realmente importantes).
 
 3.  **Copia el archivo "[optmCacheParale.js](https://github.com/mj-una/tutorial-q5-iframes/blob/main/optmCacheParale.js)"** y ajusta la lista del principio. Hay pegar "entre", "comillas", "y", "separados", "por", "coma" los links de la/s librerias/s que usas en tus sketchs. Estos son los que esten en la etiqueta ```<script>``` del ```<head>``` de los index.html (generalmente son la libreria de q5 o la de p5.sound, y es importante que sean exactamente la misma version).
 
