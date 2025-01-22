@@ -2,10 +2,10 @@
 //
 //
 // PLANTILLA: OPTIMIZACION CACHE (version con promesas)
-// sirve para decargar libreria p5 en memoria local
+// sirve para decargar libreria q5 en memoria local
 // 
 // version sin comentarios (menos spam, pero se pierden aprendizajes):
-// https://github.com/mj-una/tutorial-p5-iframes/blob/limpio/optmCacheThen.js
+// https://github.com/mj-una/tutorial-q5-iframes/blob/limpio/optmCacheThen.js
 //
 //////////////////////////////////
 
@@ -13,10 +13,10 @@
 /* ~ */ /* ~ ~ ~ ~ ~ ~ ~ Ajuste De La Url ~ ~ ~ ~ ~ ~ ~ */ /* ~ */
 /* ~ */ /*                                              */ /* ~ */
 /* ~ */ /*                                              */ /* ~ */
-/* ~ */ /*     Copia y pega el link de p5, que esta     */ /* ~ */
+/* ~ */ /*     Copia y pega el link de q5, que esta     */ /* ~ */
 /* ~ */ /*  en la etiqueta <script> del head tus html.  */ /* ~ */
 /* ~ */                                                    /* ~ */
-const URL_P5 = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js";
+const URL_Q5 = "https://q5js.org/q5.js";
 /* ~ */                                                    /* ~ */
 /* ~ */ /*                                              */ /* ~ */
 /* ~ */ /*     P.D: estoy preparando otro codigo        */ /* ~ */
@@ -33,19 +33,19 @@ const URL_P5 = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/p5.min.js";
 function escribirCache(evento) {
 
   // waitUntil asegura que todas las tareas se terminen de ejecutar
-  // antes de que termine el evento install. en este caso descargar p5
+  // antes de que termine el evento install. en este caso descargar q5
   evento.waitUntil( // *recibe una promesa (aprender "asincronia") !!!
 
 		// el objeto "caches" es parte de la api "cache storage"
 		// y permite escribir/leer recursos en memoria local del navegador.
 		// es en plural ("caches") porque contiene varios compartimientos...
-		// ...diferenciables segun un nombre (en este caso: "cache-p5-iframes")
-    caches.open("cache-p5-iframes").then(cache => { // #PROMESA INTERMEDIA
+		// ...diferenciables segun un nombre (en este caso: "cache-q5-iframes")
+    caches.open("cache-q5-iframes").then(cache => { // #PROMESA INTERMEDIA
       console.log("[wrkr log: 1] cache abierta! agregando la librería!");
 
 			// descarga codigo desde la url y lo guarda en memoria
 			// (internamente hace: "fetch" y luego "cache.put")
-      return cache.add(URL_P5); // #PROMESA FINAL
+      return cache.add(URL_Q5); // #PROMESA FINAL
     })
   );
 };
@@ -56,7 +56,7 @@ function interceptarSolicitud(evento) {
 
   // verificar destino de la solicitud.
 	// en caso que NO se trate del link de la libreria: se continua fetch
-  if (evento.request.url !== URL_P5) return;
+  if (evento.request.url !== URL_Q5) return;
 
 	// en caso contrario (la url coincide): se intercepta la solicitud
   // y se intenta responder con informacion desde la cache (sin fetch)
@@ -68,7 +68,7 @@ function interceptarSolicitud(evento) {
 
 			// si existe...
 			if (respuesta0) {
-				console.log("[wrkr log: 2] leyendo p5 desde la cache!!!");
+				console.log("[wrkr log: 2] leyendo q5 desde la cache!!!");
 				return respuesta0; // ...retorna la copia de cache
 			}
 
@@ -80,7 +80,7 @@ function interceptarSolicitud(evento) {
         console.log("[wrkr log: 3.1] resolviendo. nueva solicitud enviada!");
 
 				// intenta acceder al compartimiento de la cache...
-				return caches.open("cache-p5-iframes").then(cache => { // #PROMESA 2
+				return caches.open("cache-q5-iframes").then(cache => { // #PROMESA 2
 					console.log("[wrkr log: 3.2] resolviendo. almacenando respuesta!");
 
 					// ...y lo sobreescribe. se usa clone para fijar texto temporal

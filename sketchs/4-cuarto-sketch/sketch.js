@@ -91,39 +91,11 @@ function comunicarVentana() {
     else noLoop();
   }
 
-  // manejador evento resize
-  function canvasResponsive() {
-
-    // dom
-    const body = document.querySelector("body");
-    const canv = document.querySelector("#defaultCanvas0");
-
-    // centrar
-    body.style.overflow = "hidden";
-    body.style.display = "flex";
-    body.style.justifyContent = "center";
-    body.style.alignItems = "center";
-    body.style.height = "100vh";
-
-    // responsive
-    if (windowWidth * height > windowHeight * width) {
-      canv.style.height = "100vh";
-      canv.style.width = (100 / height) * width + "vh";
-    }
-    else {
-      canv.style.width = "100vw";
-      canv.style.height = (100 / width) * height + "vw";
-    }
-  }
-
   // evento message (info desde contexto externo)
   window.addEventListener("message", actualizarReproduccion);
 
-  // evento resize (para adaptar medida del canvas)
-  window.addEventListener("resize", canvasResponsive);
-
   // primera ejecucion
-  canvasResponsive();
+  displayMode("maxed"); // responsive nativo de q5
   noLoop(); // inicia pausado hasta que llegue mensaje
 } // fin de "comunicarVentana()". copiar hasta aca [ $$ ]
 
