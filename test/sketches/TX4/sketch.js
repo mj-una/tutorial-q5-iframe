@@ -1,6 +1,6 @@
 
-const TX = 4; // DEEP = 27
-const DEEP = Math.round(Math.pow(1.732, TX + 2));
+const TX = 4; // DEEP = 31
+const DEEP = Math.round(Math.pow(1.732, TX + 2)) + 4;
 const SHAD = [188 / DEEP, 235 / DEEP, 282 / DEEP];
 
 let slowing, delta;
