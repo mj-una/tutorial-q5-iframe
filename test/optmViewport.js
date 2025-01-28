@@ -10,7 +10,7 @@ function isInViewport(elem) {
   const topBorder = box.top >= 0 && box.top <= window.innerHeight;
   const bottomBorder = box.bottom >= 0 && box.bottom <= window.innerHeight;
 
-  // (-) strict
+  // (+) partial
   return topBorder || bottomBorder; 
 }
 
