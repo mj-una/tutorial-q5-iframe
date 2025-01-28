@@ -32,7 +32,7 @@ function iterateIframes() {
     }, "*");
 
     // early return
-    if (isFocused) return;
+    // if (isFocused) return;
   }
 }
 
